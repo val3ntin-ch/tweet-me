@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prettier-format": "prettier --config .prettierrc.js 'src/**/*.{ts,tsx}' --write"
   },
   "dependencies": {
     "react": "16.13.1",
@@ -22,8 +23,10 @@
     "@types/react-test-renderer": "^16.9.2",
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
+    "husky": "^5.0.9",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "pretty-quick": "^3.1.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
@@ -40,5 +43,10 @@
       "json",
       "node"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick prettier-format && lint"
+    }
   }
 }
