@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AppNavigation from './navigation/Navigation';
+import AppNavigation from '../navigation/Navigation';
 
 export type AppStackNavigation = {
   AppNavigation: object | undefined;
