@@ -46,7 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick prettier-format"
+      "pre-commit": "pretty-quick prettier-format && lint"
     }
   }
 }
