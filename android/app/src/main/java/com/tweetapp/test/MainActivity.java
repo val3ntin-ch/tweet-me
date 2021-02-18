@@ -1,4 +1,4 @@
-package com.tweettsproject;
+package com.tweetapp.test;
 
 import com.facebook.react.ReactActivity;
 
