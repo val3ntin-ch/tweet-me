@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const handleNavigation = () => {
-    navigation.navigate('Home');
+    navigation.navigate('HomeScreen');
   };
 
   return (

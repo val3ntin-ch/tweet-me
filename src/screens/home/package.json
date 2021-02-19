@@ -1,5 +1,5 @@
 {
-  "name": "Home",
+  "name": "HomeScreen",
   "private": true,
-  "main": "./Home.tsx"
+  "main": "./HomeScreen.tsx"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "Details",
+  "name": "DetailsScreen",
   "private": true,
-  "main": "./Details.tsx"
+  "main": "./DetailsScreen.tsx"
 }

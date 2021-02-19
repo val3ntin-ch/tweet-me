@@ -1,5 +1,5 @@
 {
-  "name": "Login",
+  "name": "LoginScreen",
   "private": true,
-  "main": "./Login.tsx"
+  "main": "./LoginScreen.tsx"
 }
