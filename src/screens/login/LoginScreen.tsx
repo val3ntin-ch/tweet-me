@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
+import { SocialIcon } from 'react-native-elements';
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../app/navigation/types';
 
 type Props = {
@@ -15,12 +16,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Login Screen</Text>
-      <Button
-        onPress={() => handleNavigation()}
-        title="Login"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
+      <SocialIcon title="Some Twitter Message" button type="twitter" />
     </View>
   );
 };
