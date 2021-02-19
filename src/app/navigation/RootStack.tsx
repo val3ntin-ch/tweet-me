@@ -3,8 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackParamList } from './types';
 
-import HomeTabStack from './HomeTabStack';
 import LoginScreen from '../../screens/login/LoginScreen';
+import BottomTabStack from './BottomTabStack';
 
 const StackRoot = createStackNavigator<RootStackParamList>();
 
@@ -18,7 +18,7 @@ const RootStack: React.FC = () => {
         initialRouteName="Login"
       >
         <StackRoot.Screen name="Login" component={LoginScreen} />
-        <StackRoot.Screen name="Home" component={HomeTabStack} />
+        <StackRoot.Screen name="Home" component={BottomTabStack} />
       </StackRoot.Navigator>
     </NavigationContainer>
   );

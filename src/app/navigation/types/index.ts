@@ -14,3 +14,10 @@ export type RootStackParamList = {
   Login: { userName: string } | undefined;
   Home: NavigatorScreenParams<BottomMenuStackParamList>;
 };
+
+export type StackParamList = {
+  Login: { userName: string } | undefined;
+  Home: { userName: string } | undefined;
+  Details: { tweetObj: Object } | undefined;
+  Settings: undefined;
+};
