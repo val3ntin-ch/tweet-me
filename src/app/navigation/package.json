@@ -1,5 +1,5 @@
 {
-  "name": "Navigation",
+  "name": "RootStack",
   "private": true,
-  "main": "./Navigation.tsx"
+  "main": "./RootStack.tsx"
 }

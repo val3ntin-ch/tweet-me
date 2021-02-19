@@ -6,7 +6,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
       <Button
-        onPress={() => navigation.navigate('DetailsScreen')}
+        onPress={() => navigation.navigate('Details')}
         title="Details"
         color="#841584"
         accessibilityLabel="Learn more about this purple button"
