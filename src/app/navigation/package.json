@@ -1,0 +1,5 @@
+{
+  "name": "RootStack",
+  "private": true,
+  "main": "./RootStack.tsx"
+}

@@ -1,0 +1,5 @@
+{
+  "name": "SettingsScreen",
+  "private": true,
+  "main": "./SettingsScreen.tsx"
+}
