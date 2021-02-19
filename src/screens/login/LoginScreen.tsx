@@ -1,15 +1,13 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../app/navigation/types';
-
-type LoginScreenNavigationProp = StackNavigationProp<StackParamList, 'Login'>;
+import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../app/navigation/types';
 
 type Props = {
+  route: LoginScreenRouteProp;
   navigation: LoginScreenNavigationProp;
 };
 
-const LoginScreen = ({ navigation }: Props) => {
+const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   const handleNavigation = () => {
     navigation.navigate('Home');
   };

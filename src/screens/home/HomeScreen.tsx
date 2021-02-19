@@ -1,15 +1,13 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { StackParamList } from '../../app/navigation/types';
-
-type HomeScreenNavigationProp = StackNavigationProp<StackParamList, 'Login'>;
+import { HomeScreenRouteProp, HomeScreenNavigationProp } from '../../app/navigation/types';
 
 type Props = {
+  route: HomeScreenRouteProp;
   navigation: HomeScreenNavigationProp;
 };
 
-const HomeScreen = ({ navigation }: Props) => {
+const HomeScreen: React.FC<Props> = ({ navigation }: Props) => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
