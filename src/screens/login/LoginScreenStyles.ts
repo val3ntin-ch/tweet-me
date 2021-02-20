@@ -18,24 +18,27 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    color: 'gray',
+    color: '#636469',
     fontSize: 20,
     fontWeight: 'bold',
   },
   input: {
     fontSize: 18,
     paddingLeft: 10,
-    color: 'gray',
+    color: '#636469',
   },
   inputContainer: {
-    borderBottomColor: 'gray',
+    borderBottomColor: '#636469',
   },
-  inputErrorColor: {
-    color: 'red',
+  inputError: {
+    color: '#e25050',
+    fontSize: 13,
+    fontStyle: 'italic',
+    fontWeight: '600',
   },
   buttonTitle: {
     fontSize: 12,
-    color: 'gray',
+    color: '#00acee',
     fontWeight: '700',
   },
   buttonContainer: {

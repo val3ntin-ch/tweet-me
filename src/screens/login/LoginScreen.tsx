@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
@@ -13,6 +13,25 @@ type Props = {
 };
 
 const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
+  const [inputValue, setInputValue] = useState('');
+  const [validInput, setValidInput] = useState(false);
+
+  const validateUsername = (username: string) => {
+    const pattern = new RegExp('^@?([a-zA-Z0-9_]){1,15}$');
+    return pattern.test(username);
+  };
+
+  const handleOnChange = (text: string) => {
+    const value = text.toLowerCase();
+    if (value !== 'Twitter' && value !== 'Admin') {
+      const isValid = validateUsername(value);
+      isValid ? setInputValue(value) : setValidInput(!isValid);
+    }
+    if (value === '') {
+      setValidInput(false);
+    }
+  };
+
   const handleNavigation = () => {
     navigation.navigate('Home');
   };
@@ -31,20 +50,24 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   return (
     <View style={styles.layout}>
       <View style={styles.logoContainer}>
-        <IconLogo name="twitter" size={80} color="gray" />
+        <IconLogo name="twitter" size={80} color="#636469" />
       </View>
       <View style={styles.container}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>Login to your Account</Text>
         </View>
         <Input
-          selectionColor="gray"
-          placeholder="Username"
-          placeholderTextColor="gray"
+          autoCapitalize="none"
+          onChangeText={(text) => handleOnChange(text)}
+          defaultValue={inputValue}
+          selectionColor="#636469"
+          placeholder="username"
+          placeholderTextColor="#636469"
           inputStyle={styles.input}
-          leftIcon={<Icon name="user-o" size={20} color="gray" />}
+          leftIcon={<Icon name="user-o" size={20} color="#636469" />}
           containerStyle={styles.inputContainer}
-          errorStyle={styles.inputErrorColor}
+          errorMessage={validInput ? 'Invalid username' : ''}
+          errorStyle={styles.inputError}
         />
         <Button
           title="Need help with your username?"
