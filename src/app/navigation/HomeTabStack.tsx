@@ -1,11 +1,13 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+// import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { HomeStackParamList } from './types';
 
 import HomeScreen from '../../screens/home/HomeScreen';
 import DetailsScreen from '../../screens/details/DetailsScreen';
 
-const HomeStack = createStackNavigator<HomeStackParamList>();
+// const HomeStack = createStackNavigator<HomeStackParamList>();
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 const HomeTabStack: React.FC = () => {
   return (

@@ -1,12 +1,12 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackParamList } from './types';
 
 import LoginScreen from '../../screens/login/LoginScreen';
 import BottomTabStack from './BottomTabStack';
 
-const StackRoot = createStackNavigator<RootStackParamList>();
+const StackRoot = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack: React.FC = () => {
   return (
