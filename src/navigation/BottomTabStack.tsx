@@ -4,7 +4,7 @@ import { BottomMenuStackParamList } from './types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeTabStack from './HomeTabStack';
-import SettingsScreen from '../../screens/settings';
+import SettingsScreen from '../screens/settings/SettingsScreen';
 
 const Tab = createBottomTabNavigator<BottomMenuStackParamList>();
 

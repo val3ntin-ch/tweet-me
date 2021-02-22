@@ -3,8 +3,8 @@ import React from 'react';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { HomeStackParamList } from './types';
 
-import HomeScreen from '../../screens/home/HomeScreen';
-import DetailsScreen from '../../screens/details/DetailsScreen';
+import HomeScreen from '../screens/home/HomeScreen';
+import DetailsScreen from '../screens/details/DetailsScreen';
 
 // const HomeStack = createStackNavigator<HomeStackParamList>();
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();

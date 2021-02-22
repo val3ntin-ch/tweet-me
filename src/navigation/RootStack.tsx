@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackParamList } from './types';
 
-import LoginScreen from '../../screens/login/LoginScreen';
+import LoginScreen from '../screens/login/LoginScreen';
 import BottomTabStack from './BottomTabStack';
 
 const StackRoot = createNativeStackNavigator<RootStackParamList>();
