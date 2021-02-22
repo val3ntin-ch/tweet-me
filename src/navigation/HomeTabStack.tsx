@@ -1,19 +1,40 @@
 import React from 'react';
-// import { createStackNavigator } from '@react-navigation/stack';
-import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import { HomeStackParamList } from './types';
+import { createStackNavigator } from '@react-navigation/stack';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { HomeStackParamList } from './types';
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
 
-// const HomeStack = createStackNavigator<HomeStackParamList>();
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+import colors from '../theme/colors';
+
+const LogoTitle: React.FC = (): React.ReactElement => <Ionicons name="logo-twitter" size={42} color={colors.blue} />;
+
+const HomeStack = createStackNavigator<HomeStackParamList>();
 
 const HomeTabStack: React.FC = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="Details" component={DetailsScreen} />
+      <HomeStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+          headerTitle: () => <LogoTitle />,
+        }}
+      />
+      <HomeStack.Screen
+        name="Details"
+        component={DetailsScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: colors.white,
+          },
+          headerTintColor: colors.blue,
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
