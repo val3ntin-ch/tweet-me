@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { SettingsScreenRouteProp, SettingsScreenNavigationProp } from '../../app/navigation/types';
+import { SettingsScreenRouteProp, SettingsScreenNavigationProp } from '../../navigation/types';
 
 type Props = {
   route: SettingsScreenRouteProp;

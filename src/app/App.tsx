@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import RootStack from '../navigation';
+import RootStack from '../navigation/RootStack';
 
 Icon.loadFont();
 

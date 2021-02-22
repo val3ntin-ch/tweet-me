@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-import { HomeScreenRouteProp, HomeScreenNavigationProp } from '../../app/navigation/types';
+import { HomeScreenRouteProp, HomeScreenNavigationProp } from '../../navigation/types';
 
 type Props = {
   route: HomeScreenRouteProp;
