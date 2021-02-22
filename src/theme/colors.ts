@@ -1,3 +1,15 @@
 export default {
-  textFieldSelectionColor: '#636469',
+  red: '#e25050',
+  darkBlue: '#0b212f',
+  blue: '#00acee',
+  blue2: '#2980b9',
+  blue3: '#0195ae',
+  blue4: '#005f89',
+  white: '#fff',
+  black: '#000',
+  darkGray: '#44586a',
+  gray: '#636469',
+  gray2: '#cfcfc4',
+  gray3: '#fdfdfc',
+  gray4: '#F5F5F5',
 };

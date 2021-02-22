@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../theme/colors';
 
 const styles = StyleSheet.create({
   layout: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: colors.gray3,
   },
 
   logoContainer: {
@@ -18,27 +20,27 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    color: '#636469',
+    color: colors.gray,
     fontSize: 20,
     fontWeight: 'bold',
   },
   input: {
     fontSize: 18,
     paddingLeft: 10,
-    color: '#636469',
+    color: colors.gray,
   },
   inputContainer: {
-    borderBottomColor: '#636469',
+    borderBottomColor: colors.gray,
   },
   inputError: {
-    color: '#e25050',
+    color: colors.red,
     fontSize: 13,
     fontStyle: 'italic',
     fontWeight: '600',
   },
   buttonTitle: {
     fontSize: 12,
-    color: '#00acee',
+    color: colors.blue,
     fontWeight: '700',
   },
   buttonContainer: {

@@ -52,7 +52,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   return (
     <View style={styles.layout}>
       <View style={styles.logoContainer}>
-        <IconLogo name="twitter" size={80} color={colors.textFieldSelectionColor} />
+        <IconLogo name="twitter" size={80} color={colors.gray} />
       </View>
       <View style={styles.container}>
         <View style={styles.titleContainer}>
@@ -62,11 +62,11 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
           autoCapitalize="none"
           onChangeText={onChangeHandler}
           defaultValue={inputValue}
-          selectionColor={colors.textFieldSelectionColor}
+          selectionColor={colors.gray}
           placeholder="username"
-          placeholderTextColor={colors.textFieldSelectionColor}
+          placeholderTextColor={colors.gray}
           inputStyle={styles.input}
-          leftIcon={<Icon name="user-o" size={20} color={colors.textFieldSelectionColor} />}
+          leftIcon={<Icon name="user-o" size={20} color={colors.gray} />}
           containerStyle={styles.inputContainer}
           errorMessage={!isInputValid && isFieldTouched ? 'Invalid username' : ''}
           errorStyle={styles.inputError}
