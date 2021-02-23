@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    color: colors.gray,
+    color: colors.darkGray,
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     color: colors.gray,
   },
   inputContainer: {
-    borderBottomColor: colors.gray,
+    borderBottomColor: colors.darkBlue,
   },
   inputError: {
     color: colors.red,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 12,
-    color: colors.blue,
+    color: colors.blue4,
     fontWeight: '700',
   },
   buttonContainer: {
