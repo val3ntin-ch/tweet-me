@@ -1,0 +1,5 @@
+{
+  "name": "DetailsTitle",
+  "private": true,
+  "main": "./DetailsTitle.tsx"
+}

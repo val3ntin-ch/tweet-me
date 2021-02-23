@@ -1,0 +1,5 @@
+{
+  "name": "LogoTitle",
+  "private": true,
+  "main": "./LogoTitle.tsx"
+}
