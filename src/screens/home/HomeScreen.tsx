@@ -24,20 +24,33 @@ const formatDate = (value: string): string => {
   return moment(value).format('HH:mm - D.MM.YYYY');
 };
 
-const HomeScreen: React.FC<Props> = ({ navigation }: Props) => {
+const EmptyListView: React.FC = (): React.ReactElement => (
+  <View style={styles.emptyList}>
+    <Text style={styles.emptyListPlaceholder}>You don't have tweets... !</Text>
+  </View>
+);
+
+const HomeScreen: React.FC<Props> = ({ navigation }: Props): React.ReactElement => {
   const {
-    data,
+    data: tweets,
     includes: { users },
   } = allData;
 
-  const onNavigationHandler = () => {
-    navigation.navigate('Details');
+  const onNavigationHandler = (item: Item) => {
+    console.log('Event ', item);
+    navigation.navigate('Details', { tweetObj: item });
   };
 
   const keyExtractor = (item: Item) => item.id;
 
   const renderItem = ({ item }: { item: Item }) => (
-    <ListItem onPress={onNavigationHandler} bottomDivider topDivider pad={20} containerStyle={styles.listItemContainer}>
+    <ListItem
+      onPress={() => onNavigationHandler(item)}
+      bottomDivider
+      topDivider
+      pad={20}
+      containerStyle={styles.listItemContainer}
+    >
       <Avatar
         containerStyle={styles.avatarContainer}
         rounded
@@ -60,7 +73,13 @@ const HomeScreen: React.FC<Props> = ({ navigation }: Props) => {
   );
   return (
     <View style={styles.container}>
-      <FlatList data={data} renderItem={renderItem} keyExtractor={keyExtractor} />
+      <FlatList
+        data={tweets}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        contentContainerStyle={styles.listContainer}
+        ListEmptyComponent={<EmptyListView />}
+      />
     </View>
   );
 };

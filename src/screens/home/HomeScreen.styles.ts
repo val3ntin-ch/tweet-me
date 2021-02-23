@@ -42,6 +42,23 @@ const styles = StyleSheet.create({
     color: colors.blue4,
     fontSize: 13,
   },
+
+  emptyList: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  emptyListPlaceholder: {
+    fontWeight: '600',
+    fontSize: 18,
+    fontStyle: 'italic',
+    color: colors.darkGray,
+  },
+
+  listContainer: {
+    flexGrow: 1,
+  },
 });
 
 export default styles;
