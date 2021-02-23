@@ -48,11 +48,11 @@ const HomeScreen: React.FC<Props> = ({ navigation }: Props) => {
         <ListItem.Title style={styles.usernameContainer}>
           <Text style={styles.usernameStyle}>{users[0].name}</Text>
         </ListItem.Title>
-        <ListItem.Title>
-          <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
-            <Text style={styles.listItemTitle}>{item.text}</Text>
-          </Hyperlink>
-        </ListItem.Title>
+        <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
+          <Text style={styles.listItemTitle} numberOfLines={1}>
+            {item.text}
+          </Text>
+        </Hyperlink>
         <ListItem.Subtitle style={styles.listItemSubtitle}>{formatDate(item.created_at)}</ListItem.Subtitle>
       </ListItem.Content>
       <ListItem.Chevron color={colors.gray} size={26} />

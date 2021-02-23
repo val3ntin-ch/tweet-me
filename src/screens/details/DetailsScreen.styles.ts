@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   listItemContainer: {
     justifyContent: 'space-evenly',
     backgroundColor: colors.gray4,
-    height: 100,
   },
 
   avatarContainer: {
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   listItemTitle: {
-    justifyContent: 'center',
     color: colors.darkBlue,
   },
 
