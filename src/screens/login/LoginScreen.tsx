@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Linking, Text } from 'react-native';
+import { SocialIcon, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
-import { SocialIcon, Input, Button } from 'react-native-elements';
+
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';

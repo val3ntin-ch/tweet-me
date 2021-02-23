@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeStackParamList } from './types';
+
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import { LogoTitle } from './HomeTabStack';
+import { HomeStackParamList } from './types';
 
 import colors from '../theme/colors';
 

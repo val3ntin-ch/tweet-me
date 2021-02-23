@@ -2,9 +2,10 @@ import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
-import { HomeScreenRouteProp, HomeScreenNavigationProp, ITweetItem } from '../../navigation/types';
+
 import allData from '../../mock-data/data.json';
 import formatDate from '../../utils/index';
+import { HomeScreenRouteProp, HomeScreenNavigationProp, ITweetItem } from '../../navigation/types';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
 

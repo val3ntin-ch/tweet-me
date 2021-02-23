@@ -3,9 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
 
-import { HomeStackParamList } from './types';
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
+import { HomeStackParamList } from './types';
 
 import colors from '../theme/colors';
 
