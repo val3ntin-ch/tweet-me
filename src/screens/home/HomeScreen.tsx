@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
-import { HomeScreenRouteProp, HomeScreenNavigationProp, Item } from '../../navigation/types';
+import { HomeScreenRouteProp, HomeScreenNavigationProp, ITweetItem } from '../../navigation/types';
 import allData from '../../mock-data/data.json';
 import formatDate from '../../utils/index';
 import styles from './HomeScreen.styles';
@@ -25,14 +25,13 @@ const HomeScreen: React.FC<Props> = ({ navigation }: Props): React.ReactElement 
     includes: { users },
   } = allData;
 
-  const onNavigationHandler = (item: Item) => {
-    console.log('Event ', item);
+  const onNavigationHandler = (item: ITweetItem) => {
     navigation.navigate('Details', { tweetObj: item });
   };
 
-  const keyExtractor = (item: Item) => item.id;
+  const keyExtractor = (item: ITweetItem) => item.id;
 
-  const renderItem = ({ item }: { item: Item }) => (
+  const renderItem = ({ item }: { item: ITweetItem }) => (
     <ListItem
       onPress={() => onNavigationHandler(item)}
       bottomDivider

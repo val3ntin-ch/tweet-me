@@ -2,9 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomMenuStackParamList } from './types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import HomeTabStack from './HomeTabStack';
-import SettingsScreen from '../screens/settings/SettingsScreen';
+
+import SettingsTabStack from './SettingsTabStack';
 
 import colors from '../theme/colors';
 
@@ -34,7 +34,7 @@ const BottomTabStack: React.FC = () => {
       />
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={SettingsTabStack}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name="settings" size={30} color={color} />,
         }}
