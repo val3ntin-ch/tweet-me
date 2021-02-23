@@ -9,8 +9,10 @@ import DetailsScreen from '../screens/details/DetailsScreen';
 
 import colors from '../theme/colors';
 
-const LogoTitle: React.FC = (): React.ReactElement => <Ionicons name="logo-twitter" size={42} color={colors.blue} />;
-const DetailsTitle: React.FC = (): React.ReactElement => <Octicons name="info" size={36} color={colors.blue} />;
+export const LogoTitle: React.FC = (): React.ReactElement => (
+  <Ionicons name="logo-twitter" size={42} color={colors.blue} />
+);
+export const DetailsTitle: React.FC = (): React.ReactElement => <Octicons name="info" size={36} color={colors.blue} />;
 
 const HomeStack = createStackNavigator<HomeStackParamList>();
 

@@ -2,21 +2,29 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 
-export type Item = {
+export type ITweetItem = {
   text: string;
   created_at: string;
   author_id: string;
   id: string;
 };
 
+export type ITwitterUserObj = {
+  username: string;
+  profile_image_url: string;
+  id: string;
+  name: string;
+  created_at: string;
+};
+
 export type HomeStackParamList = {
   Home: { userName: string } | undefined;
-  Details: { tweetObj: Item } | undefined;
+  Details: { tweetObj: ITweetItem } | undefined;
 };
 
 export type BottomMenuStackParamList = {
   Home: NavigatorScreenParams<HomeStackParamList>;
-  Settings: undefined;
+  Settings: { twitterUserObj: ITwitterUserObj };
 };
 
 export type RootStackParamList = {
@@ -27,8 +35,8 @@ export type RootStackParamList = {
 export type StackParamList = {
   Login: { userName: string } | undefined;
   Home: { userName: string } | undefined;
-  Details: { tweetObj: Item };
-  Settings: undefined;
+  Details: { tweetObj: ITweetItem };
+  Settings: { twitterUserObj: ITwitterUserObj };
 };
 
 export type LoginScreenRouteProp = RouteProp<StackParamList, 'Login'>;
