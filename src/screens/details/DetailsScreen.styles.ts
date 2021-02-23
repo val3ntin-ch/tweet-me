@@ -5,25 +5,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.gray3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
-  listItemContainer: {
+  cardContainer: {
     justifyContent: 'space-evenly',
     backgroundColor: colors.gray4,
   },
-
-  avatarContainer: {
-    alignSelf: 'flex-start',
+  cardTitle: {
+    fontStyle: 'italic',
+    color: colors.darkGray,
+    fontSize: 20,
   },
 
-  usernameContainer: {
-    marginBottom: 5,
-  },
-
-  usernameStyle: {
-    fontWeight: 'bold',
+  messageStyle: {
+    fontWeight: '700',
     fontSize: 18,
     color: colors.darkGray,
+    marginBottom: 10,
   },
 
   linkStyle: {
@@ -31,14 +31,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
-  listItemTitle: {
-    color: colors.darkBlue,
-  },
 
-  listItemSubtitle: {
+  dateStyle: {
     marginTop: 5,
     color: colors.blue4,
     fontSize: 13,
+    marginBottom: 10,
+    alignSelf: 'flex-end',
+    fontStyle: 'italic',
   },
 });
 

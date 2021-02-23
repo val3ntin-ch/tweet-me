@@ -1,27 +1,16 @@
 import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
-import moment from 'moment';
 import Hyperlink from 'react-native-hyperlink';
-import { HomeScreenRouteProp, HomeScreenNavigationProp } from '../../navigation/types';
+import { HomeScreenRouteProp, HomeScreenNavigationProp, Item } from '../../navigation/types';
 import allData from '../../mock-data/data.json';
+import formatDate from '../../utils/index';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
 
 type Props = {
   route: HomeScreenRouteProp;
   navigation: HomeScreenNavigationProp;
-};
-
-type Item = {
-  text: string;
-  created_at: string;
-  author_id: string;
-  id: string;
-};
-
-const formatDate = (value: string): string => {
-  return moment(value).format('HH:mm - D.MM.YYYY');
 };
 
 const EmptyListView: React.FC = (): React.ReactElement => (
