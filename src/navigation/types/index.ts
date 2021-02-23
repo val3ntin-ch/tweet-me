@@ -2,9 +2,16 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 
+export type Item = {
+  text: string;
+  created_at: string;
+  author_id: string;
+  id: string;
+};
+
 export type HomeStackParamList = {
   Home: { userName: string } | undefined;
-  Details: { tweetObj: Object } | undefined;
+  Details: { tweetObj: Item } | undefined;
 };
 
 export type BottomMenuStackParamList = {
@@ -20,7 +27,7 @@ export type RootStackParamList = {
 export type StackParamList = {
   Login: { userName: string } | undefined;
   Home: { userName: string } | undefined;
-  Details: { tweetObj: Object } | undefined;
+  Details: { tweetObj: Item };
   Settings: undefined;
 };
 
