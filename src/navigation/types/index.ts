@@ -16,26 +16,21 @@ export type ITwitterUserObj = {
   created_at: string;
 };
 
-export type HomeStackParamList = {
+export type StackParamList = {
+  Login: { userName: string } | undefined;
   Home: { userName: string } | undefined;
-  Details: { tweetObj: ITweetItem } | undefined;
+  Details: { tweetObj: ITweetItem };
+  Settings: { twitterUserObj: ITwitterUserObj };
 };
 
 export type BottomMenuStackParamList = {
-  Home: NavigatorScreenParams<HomeStackParamList>;
+  Home: NavigatorScreenParams<StackParamList>;
   Settings: { twitterUserObj: ITwitterUserObj };
 };
 
 export type RootStackParamList = {
   Login: { userName: string } | undefined;
   Home: NavigatorScreenParams<BottomMenuStackParamList>;
-};
-
-export type StackParamList = {
-  Login: { userName: string } | undefined;
-  Home: { userName: string } | undefined;
-  Details: { tweetObj: ITweetItem };
-  Settings: { twitterUserObj: ITwitterUserObj };
 };
 
 export type LoginScreenRouteProp = RouteProp<StackParamList, 'Login'>;

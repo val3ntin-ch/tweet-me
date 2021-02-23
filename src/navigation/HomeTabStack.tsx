@@ -5,7 +5,7 @@ import Octicons from 'react-native-vector-icons/Octicons';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
-import { HomeStackParamList } from './types';
+import { StackParamList } from './types';
 
 import colors from '../theme/colors';
 
@@ -14,7 +14,7 @@ export const LogoTitle: React.FC = (): React.ReactElement => (
 );
 export const DetailsTitle: React.FC = (): React.ReactElement => <Octicons name="info" size={36} color={colors.blue} />;
 
-const HomeStack = createStackNavigator<HomeStackParamList>();
+const HomeStack = createStackNavigator<StackParamList>();
 
 const HomeTabStack: React.FC = () => {
   return (

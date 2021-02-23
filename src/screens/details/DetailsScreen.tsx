@@ -4,7 +4,7 @@ import Hyperlink from 'react-native-hyperlink';
 import { Card } from 'react-native-elements';
 
 import { DetailsScreenRouteProp, DetailsScreenNavigationProp } from '../../navigation/types';
-import formatDate from '../../utils/index';
+import { formatDate } from '../../utils/index';
 import styles from './DetailsScreen.styles';
 
 type Props = {

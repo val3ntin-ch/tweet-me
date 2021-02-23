@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
 
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
+import TWITTER_USERNAME_RULES_URL from '../../services/constants';
+import { validateUsername } from '../../utils/index';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
 
@@ -12,13 +14,6 @@ type Props = {
   route: LoginScreenRouteProp;
   navigation: LoginScreenNavigationProp;
 };
-
-const validateUsername = (username: string): boolean => {
-  const pattern = new RegExp('^@?([a-zA-Z0-9_]){1,15}$');
-  return pattern.test(username);
-};
-
-const TWITTER_USERNAME_RULES_URL = 'https://help.twitter.com/en/managing-your-account/twitter-username-rules';
 
 const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   const [inputValue, setInputValue] = useState('');
