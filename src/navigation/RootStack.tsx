@@ -1,9 +1,10 @@
 import React from 'react';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { RootStackParamList } from './types';
+
 import LoginScreen from '../screens/login/LoginScreen';
 import BottomTabStack from './BottomTabStack';
+import { RootStackParamList } from './types';
 
 const StackRoot = createNativeStackNavigator<RootStackParamList>();
 

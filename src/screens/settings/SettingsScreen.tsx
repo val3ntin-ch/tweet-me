@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Button, Avatar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { SettingsScreenRouteProp, SettingsScreenNavigationProp } from '../../navigation/types';
 
+import { SettingsScreenRouteProp, SettingsScreenNavigationProp } from '../../navigation/types';
 import styles from './SettingsScreen.styles';
 
 type Props = {
