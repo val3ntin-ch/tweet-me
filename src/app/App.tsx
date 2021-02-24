@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import RootStack from '../navigation/RootStack';
+import AppNavigation from '../navigation/AppNavigation';
 
 Icon.loadFont();
 
@@ -54,7 +54,7 @@ const App: React.FC = () => {
         onStateChange={(state) => AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))}
       >
         <SafeAreaProvider>
-          <RootStack />
+          <AppNavigation />
         </SafeAreaProvider>
       </NavigationContainer>
     </QueryClientProvider>

@@ -19,19 +19,19 @@ export type TwitterUserObj = {
   created_at: string;
 };
 
-export type LoginParams = {
+export type LoginScreenParams = {
   Login: undefined;
 };
 
-export type TweetParams = {
+export type TweetScreenParams = {
   Tweets: { userId: string };
 };
 
-export type DetailsParams = {
+export type DetailsScreenParams = {
   Details: { tweetObj: TweetItem };
 };
 
-export type SettingsParams = {
+export type SettingsScreenParams = {
   Settings: undefined;
 };
 
@@ -40,27 +40,27 @@ export type TweetsStackParams = {
   Details: { tweetObj: TweetItem };
 };
 
-export type TabStackParams = {
+export type BottomNavigationStackParams = {
   Home: NavigatorScreenParams<TweetsStackParams>;
   Settings: undefined;
 };
 
-export type RootStackParams = {
+export type AppStackParams = {
   Login: undefined;
-  Main: NavigatorScreenParams<TabStackParams>;
+  Main: NavigatorScreenParams<BottomNavigationStackParams>;
 };
 
-export type LoginScreenRouteProp = RouteProp<LoginParams, 'Login'>;
+export type LoginScreenRouteProp = RouteProp<LoginScreenParams, 'Login'>;
 export type LoginScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParams, 'Login'>,
-  BottomTabNavigationProp<RootStackParams>
+  StackNavigationProp<AppStackParams, 'Login'>,
+  BottomTabNavigationProp<AppStackParams>
 >;
 
-export type TweetsScreenRouteProp = RouteProp<TweetParams, 'Tweets'>;
-export type TweetsScreenNavigationProp = StackNavigationProp<TweetParams, 'Tweets'>;
+export type TweetsScreenRouteProp = RouteProp<TweetScreenParams, 'Tweets'>;
+export type TweetsScreenNavigationProp = StackNavigationProp<TweetScreenParams, 'Tweets'>;
 
-export type DetailsScreenRouteProp = RouteProp<DetailsParams, 'Details'>;
-export type DetailsScreenNavigationProp = StackNavigationProp<DetailsParams, 'Details'>;
+export type DetailsScreenRouteProp = RouteProp<DetailsScreenParams, 'Details'>;
+export type DetailsScreenNavigationProp = StackNavigationProp<DetailsScreenParams, 'Details'>;
 
-export type SettingsScreenRouteProp = RouteProp<SettingsParams, 'Settings'>;
-export type SettingsScreenNavigationProp = StackNavigationProp<SettingsParams, 'Settings'>;
+export type SettingsScreenRouteProp = RouteProp<SettingsScreenParams, 'Settings'>;
+export type SettingsScreenNavigationProp = StackNavigationProp<SettingsScreenParams, 'Settings'>;

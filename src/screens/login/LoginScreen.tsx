@@ -6,10 +6,11 @@ import IconLogo from 'react-native-vector-icons/Feather';
 
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
 import { TWITTER_USERNAME_RULES_URL } from '../../services/constants';
-import { validateUsername } from '../../utils/index';
+import { validateUsername } from '../../utils';
+import { useUserProfile } from '../../services/tweets';
+
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
-import { useUserProfile } from '../../services/tweets';
 
 type Props = {
   route: LoginScreenRouteProp;

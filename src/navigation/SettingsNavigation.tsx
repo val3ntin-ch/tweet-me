@@ -4,12 +4,12 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LogoTitle from '../components/Logo/Logo';
 
-import { SettingsParams } from './types';
+import { SettingsScreenParams } from './types';
 import colors from '../theme/colors';
 
-const SettingsStack = createStackNavigator<SettingsParams>();
+const SettingsStack = createStackNavigator<SettingsScreenParams>();
 
-const SettingsTabStack: React.FC = () => {
+const SettingsNavigation: React.FC = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
@@ -27,4 +27,4 @@ const SettingsTabStack: React.FC = () => {
   );
 };
 
-export default SettingsTabStack;
+export default SettingsNavigation;

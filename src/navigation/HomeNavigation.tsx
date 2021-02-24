@@ -11,7 +11,7 @@ import LogoTitle from '../components/Logo/Logo';
 
 const HomeStack = createStackNavigator<TweetsStackParams>();
 
-const HomeTabStack: React.FC = () => {
+const HomeNavigation: React.FC = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -41,4 +41,4 @@ const HomeTabStack: React.FC = () => {
   );
 };
 
-export default HomeTabStack;
+export default HomeNavigation;

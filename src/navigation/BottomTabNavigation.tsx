@@ -2,16 +2,16 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import HomeTabStack from './HomeTabStack';
-import SettingsTabStack from './SettingsTabStack';
-import { TabStackParams } from './types';
+import HomeTabStack from './HomeNavigation';
+import SettingsTabStack from './SettingsNavigation';
+import { BottomNavigationStackParams } from './types';
 import colors from '../theme/colors';
 
-const Tab = createBottomTabNavigator<TabStackParams>();
+const BottomStack = createBottomTabNavigator<BottomNavigationStackParams>();
 
-const BottomTabStack: React.FC = () => {
+const BottomTabNavigation: React.FC = () => {
   return (
-    <Tab.Navigator
+    <BottomStack.Navigator
       tabBarOptions={{
         activeTintColor: colors.blue,
         inactiveTintColor: colors.gray,
@@ -24,22 +24,22 @@ const BottomTabStack: React.FC = () => {
         showLabel: false,
       }}
     >
-      <Tab.Screen
+      <BottomStack.Screen
         name="Home"
         component={HomeTabStack}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name="home" size={30} color={color} />,
         }}
       />
-      <Tab.Screen
+      <BottomStack.Screen
         name="Settings"
         component={SettingsTabStack}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name="settings" size={30} color={color} />,
         }}
       />
-    </Tab.Navigator>
+    </BottomStack.Navigator>
   );
 };
 
-export default BottomTabStack;
+export default BottomTabNavigation;
