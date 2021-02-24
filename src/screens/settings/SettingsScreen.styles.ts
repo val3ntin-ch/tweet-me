@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
 
   cardSubtitle: {
-    ontSize: 18,
+    fontSize: 18,
     color: colors.darkGray,
   },
 
