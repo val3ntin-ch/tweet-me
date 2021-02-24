@@ -3,36 +3,32 @@ import { View, FlatList, Text } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
 
-import allData from '../../mock-data/data.json';
 import { formatDate } from '../../utils/index';
-import { HomeScreenRouteProp, HomeScreenNavigationProp, ITweetItem } from '../../navigation/types';
+import { TweetsScreenNavigationProp, TweetsScreenRouteProp, TweetItem, TwitterUserObj } from '../../navigation/types';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
+import { useUserTweetsList } from '../../services/tweets';
 
 type Props = {
-  route: HomeScreenRouteProp;
-  navigation: HomeScreenNavigationProp;
+  route: TweetsScreenRouteProp;
+  navigation: TweetsScreenNavigationProp;
 };
 
-const EmptyListView: React.FC = (): React.ReactElement => (
+const EmptyListView: React.FC = () => (
   <View style={styles.emptyList}>
     <Text style={styles.emptyListPlaceholder}>You don't have tweets... !</Text>
   </View>
 );
 
-const HomeScreen: React.FC<Props> = ({ navigation }: Props): React.ReactElement => {
-  const {
-    data: tweets,
-    includes: { users },
-  } = allData;
+const keyExtractor = (item: TweetItem) => item.id;
 
-  const onNavigationHandler = (item: ITweetItem) => {
-    navigation.navigate('Details', { tweetObj: item });
+const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, userData: TwitterUserObj) => {
+  console.log('item data ', item);
+  const onNavigationHandler = (itemObj: TweetItem) => {
+    navigation.navigate('Details', { tweetObj: itemObj });
   };
 
-  const keyExtractor = (item: ITweetItem) => item.id;
-
-  const renderItem = ({ item }: { item: ITweetItem }) => (
+  return (
     <ListItem
       onPress={() => onNavigationHandler(item)}
       bottomDivider
@@ -43,12 +39,12 @@ const HomeScreen: React.FC<Props> = ({ navigation }: Props): React.ReactElement 
       <Avatar
         containerStyle={styles.avatarContainer}
         rounded
-        source={{ uri: users[0].profile_image_url }}
+        source={{ uri: userData?.profile_image_url }}
         size="medium"
       />
       <ListItem.Content>
         <ListItem.Title style={styles.usernameContainer}>
-          <Text style={styles.usernameStyle}>{users[0].name}</Text>
+          <Text style={styles.usernameStyle}>{userData?.name}</Text>
         </ListItem.Title>
         <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
           <Text style={styles.listItemTitle} numberOfLines={1}>
@@ -60,11 +56,17 @@ const HomeScreen: React.FC<Props> = ({ navigation }: Props): React.ReactElement 
       <ListItem.Chevron color={colors.gray} size={26} />
     </ListItem>
   );
+};
+
+const HomeScreen: React.FC<Props> = ({ route, navigation }: Props) => {
+  const { userId } = route.params;
+  const { data: tweetsData } = useUserTweetsList(userId);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={tweets}
-        renderItem={renderItem}
+        data={tweetsData?.data}
+        renderItem={({ item }) => renderItem(item, navigation, tweetsData?.includes?.users[0])}
         keyExtractor={keyExtractor}
         contentContainerStyle={styles.listContainer}
         ListEmptyComponent={<EmptyListView />}

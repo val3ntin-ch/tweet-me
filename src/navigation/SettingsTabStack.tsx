@@ -4,16 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LogoTitle from '../components/Logo/Logo';
 
-import { StackParamList } from './types';
+import { StackParams } from './types';
 import colors from '../theme/colors';
 
-const SettingsStack = createStackNavigator<StackParamList>();
+const SettingsStack = createStackNavigator<StackParams>();
 
 const SettingsTabStack: React.FC = () => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
-        name="Home"
+        name="Settings"
         component={SettingsScreen}
         options={{
           headerStyle: {

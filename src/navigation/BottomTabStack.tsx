@@ -4,10 +4,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeTabStack from './HomeTabStack';
 import SettingsTabStack from './SettingsTabStack';
-import { BottomMenuStackParamList } from './types';
+import { BottomStack } from './types';
 import colors from '../theme/colors';
 
-const Tab = createBottomTabNavigator<BottomMenuStackParamList>();
+const Tab = createBottomTabNavigator<BottomStack>();
 
 const BottomTabStack: React.FC = () => {
   return (

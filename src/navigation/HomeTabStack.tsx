@@ -3,19 +3,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
-import { StackParamList } from './types';
+import { TweetsStack } from './types';
 
 import colors from '../theme/colors';
 import DetailsTitle from '../components/DetailsIcon/DetailsIcon';
 import LogoTitle from '../components/Logo/Logo';
 
-const HomeStack = createStackNavigator<StackParamList>();
+const HomeStack = createStackNavigator<TweetsStack>();
 
 const HomeTabStack: React.FC = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
+        name="Tweets"
         component={HomeScreen}
         options={{
           headerStyle: {
