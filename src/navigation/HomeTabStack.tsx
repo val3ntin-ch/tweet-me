@@ -6,8 +6,8 @@ import DetailsScreen from '../screens/details/DetailsScreen';
 import { StackParamList } from './types';
 
 import colors from '../theme/colors';
-import DetailsTitle from '../components/DetailsTitle';
-import LogoTitle from '../components/LogoTitle';
+import DetailsTitle from '../components/DetailsIcon/DetailsIcon';
+import LogoTitle from '../components/Logo/Logo';
 
 const HomeStack = createStackNavigator<StackParamList>();
 
