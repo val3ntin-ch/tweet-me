@@ -4,10 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LogoTitle from '../components/Logo/Logo';
 
-import { StackParams } from './types';
+import { SettingsParams } from './types';
 import colors from '../theme/colors';
 
-const SettingsStack = createStackNavigator<StackParams>();
+const SettingsStack = createStackNavigator<SettingsParams>();
 
 const SettingsTabStack: React.FC = () => {
   return (
