@@ -3,13 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
-import { TweetsStack } from './types';
+import { TweetsStackParams } from './types';
 
 import colors from '../theme/colors';
 import DetailsTitle from '../components/DetailsIcon/DetailsIcon';
 import LogoTitle from '../components/Logo/Logo';
 
-const HomeStack = createStackNavigator<TweetsStack>();
+const HomeStack = createStackNavigator<TweetsStackParams>();
 
 const HomeTabStack: React.FC = () => {
   return (
