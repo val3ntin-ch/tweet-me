@@ -22,6 +22,7 @@ const HomeTabStack: React.FC = () => {
             backgroundColor: colors.white,
           },
           headerTitle: () => <LogoTitle />,
+          headerTitleAlign: 'center',
         }}
       />
       <HomeStack.Screen
@@ -33,6 +34,7 @@ const HomeTabStack: React.FC = () => {
           },
           headerTintColor: colors.blue,
           headerTitle: () => <DetailsTitle />,
+          headerTitleAlign: 'center',
         }}
       />
     </HomeStack.Navigator>

@@ -20,6 +20,7 @@ const SettingsTabStack: React.FC = () => {
             backgroundColor: colors.white,
           },
           headerTitle: () => <LogoTitle />,
+          headerTitleAlign: 'center',
         }}
       />
     </SettingsStack.Navigator>
