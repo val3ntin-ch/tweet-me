@@ -3,12 +3,14 @@ import { View, Linking, Text } from 'react-native';
 import { SocialIcon, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
+import { useQuery, useMutation, useQueryClient } from 'react-query';
 
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
 import TWITTER_USERNAME_RULES_URL from '../../services/constants';
 import { validateUsername } from '../../utils/index';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
+import getUserId from '../../services/authentication';
 
 type Props = {
   route: LoginScreenRouteProp;
@@ -20,11 +22,22 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   const [isInputValid, setIsInputValid] = useState(false);
   const [isFieldTouched, setIsFieldTouched] = useState(false);
 
+  const { data, isLoading, error } = useQuery(['fetchUserObj', inputValue], getUserId(inputValue));
+
+  console.log('data', data);
+
   useEffect(() => {
     if (inputValue !== 'Twitter' && inputValue !== 'Admin') {
       setIsInputValid(validateUsername(inputValue));
     }
   }, [inputValue]);
+
+  useEffect(() => {
+    console.log('test app ');
+    if (isInputValid) {
+      getUserId(inputValue);
+    }
+  }, [inputValue, isInputValid]);
 
   const onChangeHandler = (value: string) => {
     setInputValue(value);
