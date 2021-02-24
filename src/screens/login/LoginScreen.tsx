@@ -3,14 +3,13 @@ import { View, Linking, Text } from 'react-native';
 import { SocialIcon, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
-import { useQuery, useMutation, useQueryClient } from 'react-query';
 
 import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
-import TWITTER_USERNAME_RULES_URL from '../../services/constants';
+import { TWITTER_USERNAME_RULES_URL } from '../../services/constants';
 import { validateUsername } from '../../utils/index';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
-import getUserId from '../../services/authentication';
+import { useUserProfile } from '../../services/tweets';
 
 type Props = {
   route: LoginScreenRouteProp;
@@ -21,10 +20,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [isInputValid, setIsInputValid] = useState(false);
   const [isFieldTouched, setIsFieldTouched] = useState(false);
-
-  const { data, isLoading, error } = useQuery(['fetchUserObj', inputValue], getUserId(inputValue));
-
-  console.log('data', data);
+  const { data: userData, isLoading, isError } = useUserProfile(inputValue, isInputValid);
 
   useEffect(() => {
     if (inputValue !== 'Twitter' && inputValue !== 'Admin') {
@@ -32,20 +28,19 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
     }
   }, [inputValue]);
 
-  useEffect(() => {
-    console.log('test app ');
-    if (isInputValid) {
-      getUserId(inputValue);
-    }
-  }, [inputValue, isInputValid]);
-
   const onChangeHandler = (value: string) => {
     setInputValue(value);
     setIsFieldTouched(true);
   };
 
   const navigationHandler = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Main', {
+      screen: 'Home',
+      params: {
+        screen: 'Tweets',
+        params: { userId: userData.data[0].id },
+      },
+    });
   };
 
   const openRefInBrowserHandler = () => {
@@ -65,7 +60,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
       </View>
       <View style={styles.container}>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Login to your Account</Text>
+          <Text style={styles.title}>Get tweets by username</Text>
         </View>
         <Input
           autoCapitalize="none"
@@ -87,7 +82,14 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
           containerStyle={styles.buttonContainer}
           onPress={openRefInBrowserHandler}
         />
-        <SocialIcon title="Login" button type="twitter" onPress={navigationHandler} style={styles.socialButton} />
+        <SocialIcon
+          title="Get tweets"
+          button
+          type="twitter"
+          onPress={navigationHandler}
+          style={styles.socialButton}
+          disabled={isLoading || isError || !isInputValid}
+        />
       </View>
     </View>
   );

@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
   cardContainer: {
     justifyContent: 'space-evenly',
     backgroundColor: colors.gray4,
@@ -18,20 +17,17 @@ const styles = StyleSheet.create({
     color: colors.darkGray,
     fontSize: 20,
   },
-
   messageStyle: {
     fontWeight: '700',
     fontSize: 18,
     color: colors.darkGray,
     marginBottom: 10,
   },
-
   linkStyle: {
     color: colors.blue2,
     fontSize: 16,
     fontWeight: '700',
   },
-
   dateStyle: {
     marginTop: 5,
     color: colors.blue4,
