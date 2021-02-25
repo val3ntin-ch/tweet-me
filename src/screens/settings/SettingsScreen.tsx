@@ -11,7 +11,7 @@ type Props = {
   navigation: SettingsScreenNavigationProp;
 };
 
-const SettingsScreen: React.FC<Props> = (): React.ReactElement => {
+const SettingsScreen: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>

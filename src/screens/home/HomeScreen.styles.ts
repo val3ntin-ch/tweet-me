@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
   listContainer: {
     flexGrow: 1,
   },
+  containerLoader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default styles;

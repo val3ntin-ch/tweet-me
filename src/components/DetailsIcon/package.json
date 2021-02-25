@@ -1,5 +1,5 @@
 {
-  "name": "DetailsTitle",
+  "name": "DetailsIcon",
   "private": true,
-  "main": "./DetailsTitle.tsx"
+  "main": "./DetailsIcon.tsx"
 }

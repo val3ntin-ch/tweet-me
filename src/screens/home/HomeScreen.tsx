@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
 
@@ -7,23 +7,16 @@ import { formatDate } from '../../utils/index';
 import { TweetsScreenNavigationProp, TweetsScreenRouteProp, TweetItem, TwitterUserObj } from '../../navigation/types';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
-import { useUserTweetsList } from '../../services/tweets';
+import { useUserTweetsList, useUserTweetsPaginationList } from '../../services/tweets';
 
 type Props = {
   route: TweetsScreenRouteProp;
   navigation: TweetsScreenNavigationProp;
 };
 
-const EmptyListView: React.FC = () => (
-  <View style={styles.emptyList}>
-    <Text style={styles.emptyListPlaceholder}>You don't have tweets... !</Text>
-  </View>
-);
-
 const keyExtractor = (item: TweetItem) => item.id;
 
 const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, userData: TwitterUserObj) => {
-  console.log('item data ', item);
   const onNavigationHandler = (itemObj: TweetItem) => {
     navigation.navigate('Details', { tweetObj: itemObj });
   };
@@ -59,17 +52,53 @@ const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, use
 };
 
 const HomeScreen: React.FC<Props> = ({ route, navigation }: Props) => {
-  const { userId } = route.params;
-  const { data: tweetsData } = useUserTweetsList(userId);
+  const { userId } = route?.params;
+  const { data: tweetsData, isLoading } = useUserTweetsList(userId);
+  const [page, setPage] = React.useState('');
+  const [isEndOfList, setIsEndOfList] = React.useState(false);
+  const [tweetsList, setTweetsList] = React.useState(null);
+
+  const { data: newData } = useUserTweetsPaginationList(userId, page, isEndOfList);
+
+  console.log('data ', tweetsData);
+  React.useEffect(() => {
+    if (tweetsData) {
+      if (!tweetsList) {
+        setTweetsList(tweetsData.data);
+        setPage(tweetsData?.meta?.next_token);
+      }
+    }
+  }, [tweetsData, tweetsList]);
+
+  React.useEffect(() => {
+    if (newData && isEndOfList) {
+      setTweetsList(newData?.data.hasMore);
+      setPage(newData?.meta?.next_token);
+      setIsEndOfList(false);
+    }
+  }, [newData, isEndOfList, tweetsList]);
+
+  const onEndReachedHandler = () => {
+    setIsEndOfList(true);
+  };
+
+  const onLoadingHandler = () => <View>{isEndOfList && <ActivityIndicator size="large" color={colors.blue} />}</View>;
 
   return (
     <View style={styles.container}>
+      {isLoading && (
+        <View style={styles.containerLoader}>
+          <ActivityIndicator size="large" color={colors.blue} />
+        </View>
+      )}
       <FlatList
-        data={tweetsData?.data}
+        data={tweetsList}
         renderItem={({ item }) => renderItem(item, navigation, tweetsData?.includes?.users[0])}
         keyExtractor={keyExtractor}
         contentContainerStyle={styles.listContainer}
-        ListEmptyComponent={<EmptyListView />}
+        onEndReached={onEndReachedHandler}
+        onEndReachedThreshold={0.1}
+        ListFooterComponent={onLoadingHandler}
       />
     </View>
   );

@@ -1,12 +1,10 @@
 import axios from 'axios';
-
-const token =
-  'AAAAAAAAAAAAAAAAAAAAAMS2MwEAAAAA0SAI7sg7HWiSxSrQPjiFh7RdHbQ%3DbfifQkK7yWUHsCNzqwQg5XkIQDGyVH3ss3raHZUUbb8oKuvSGu';
+import { TOKEN, API_URL } from './constants';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.twitter.com/2/',
+  baseURL: API_URL,
   timeout: 1000,
-  headers: { Authorization: 'Bearer ' + token },
+  headers: { Authorization: 'Bearer ' + TOKEN },
 });
 
 export default axiosInstance;

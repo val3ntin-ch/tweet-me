@@ -19,19 +19,11 @@ export type TwitterUserObj = {
   created_at: string;
 };
 
-export type LoginScreenParams = {
+export type ScreensParams = {
   Login: undefined;
-};
-
-export type TweetScreenParams = {
+  Main: undefined;
   Tweets: { userId: string };
-};
-
-export type DetailsScreenParams = {
   Details: { tweetObj: TweetItem };
-};
-
-export type SettingsScreenParams = {
   Settings: undefined;
 };
 
@@ -50,17 +42,17 @@ export type AppStackParams = {
   Main: NavigatorScreenParams<BottomNavigationStackParams>;
 };
 
-export type LoginScreenRouteProp = RouteProp<LoginScreenParams, 'Login'>;
+export type LoginScreenRouteProp = RouteProp<ScreensParams, 'Login'>;
 export type LoginScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<AppStackParams, 'Login'>,
   BottomTabNavigationProp<AppStackParams>
 >;
 
-export type TweetsScreenRouteProp = RouteProp<TweetScreenParams, 'Tweets'>;
-export type TweetsScreenNavigationProp = StackNavigationProp<TweetScreenParams, 'Tweets'>;
+export type TweetsScreenRouteProp = RouteProp<ScreensParams, 'Tweets'>;
+export type TweetsScreenNavigationProp = StackNavigationProp<ScreensParams, 'Tweets'>;
 
-export type DetailsScreenRouteProp = RouteProp<DetailsScreenParams, 'Details'>;
-export type DetailsScreenNavigationProp = StackNavigationProp<DetailsScreenParams, 'Details'>;
+export type DetailsScreenRouteProp = RouteProp<ScreensParams, 'Details'>;
+export type DetailsScreenNavigationProp = StackNavigationProp<ScreensParams, 'Details'>;
 
-export type SettingsScreenRouteProp = RouteProp<SettingsScreenParams, 'Settings'>;
-export type SettingsScreenNavigationProp = StackNavigationProp<SettingsScreenParams, 'Settings'>;
+export type SettingsScreenRouteProp = RouteProp<ScreensParams, 'Settings'>;
+export type SettingsScreenNavigationProp = StackNavigationProp<ScreensParams, 'Settings'>;

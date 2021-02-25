@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     color: colors.blue2,
   },
-
   buttonStyle: {
     color: colors.gray,
     fontSize: 24,
