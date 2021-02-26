@@ -1,30 +1,28 @@
 import axiosInstance from './axios';
-import { useQuery } from 'react-query';
+import { useQuery, useInfiniteQuery } from 'react-query';
 
 export const useUserProfile = (username: string, isValid: boolean) =>
   useQuery(
     `user-data-${username}`,
-    () => axiosInstance.get(`users/by?usernames=${username}`).then((response) => response.data),
+    () =>
+      axiosInstance
+        .get(`users/by?usernames=${username}&user.fields=profile_image_url`)
+        .then((response) => response.data),
     { enabled: isValid },
   );
 
 export const useUserTweetsList = (userId: string) =>
-  useQuery(`user-tweets-list-${userId}`, () =>
-    axiosInstance
-      .get(
-        `users/${userId}/tweets?max_results=20&tweet.fields=created_at&user.fields=created_at,profile_image_url&expansions=author_id`,
-      )
-      .then((response) => response.data),
-  );
-
-export const useUserTweetsPaginationList = (userId: string, paginationToken: string, isEndOfList: boolean) =>
-  useQuery(
+  useInfiniteQuery(
     `user-tweets-list-${userId}`,
-    () =>
-      axiosInstance
+    ({ pageParam }) => {
+      const requestPaginationURL = pageParam ? `&pagination_token=${pageParam}` : '';
+      return axiosInstance
         .get(
-          `users/${userId}/tweets?max_results=20&tweet.fields=created_at&user.fields=created_at,profile_image_url&expansions=author_id&pagination_token=${paginationToken}`,
+          `users/${userId}/tweets?max_results=20&tweet.fields=created_at&user.fields=created_at,profile_image_url&expansions=author_id${requestPaginationURL}`,
         )
-        .then((response) => response.data),
-    { enabled: isEndOfList },
+        .then((response) => response.data);
+    },
+    {
+      getNextPageParam: (lastPage) => lastPage.meta.next_token,
+    },
   );

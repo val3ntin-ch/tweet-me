@@ -3,18 +3,13 @@ import { View, Text } from 'react-native';
 import Hyperlink from 'react-native-hyperlink';
 import { Card } from 'react-native-elements';
 
-import { DetailsScreenRouteProp, DetailsScreenNavigationProp } from '../../navigation/types';
+import { DetailsProps } from '../../navigation/types';
 import { formatDate } from '../../utils/index';
 import styles from './DetailsScreen.styles';
 
-type Props = {
-  route: DetailsScreenRouteProp;
-  navigation: DetailsScreenNavigationProp;
-};
-
-const DetailsScreen: React.FC<Props> = ({ route }: Props) => {
-  const { tweetObj } = route.params;
-  const { text: message, created_at: date } = tweetObj;
+const DetailsScreen: React.FC<DetailsProps> = ({ route }: DetailsProps) => {
+  const { tweet } = route.params;
+  const { text: message, created_at: date } = tweet;
 
   return (
     <View style={styles.container}>

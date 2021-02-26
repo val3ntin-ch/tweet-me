@@ -3,15 +3,12 @@ import { View, Text } from 'react-native';
 import { Button, Avatar } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { SettingsScreenRouteProp, SettingsScreenNavigationProp } from '../../navigation/types';
+import { SettingsProps } from '../../navigation/types';
 import styles from './SettingsScreen.styles';
 
-type Props = {
-  route: SettingsScreenRouteProp;
-  navigation: SettingsScreenNavigationProp;
-};
+const SettingsScreen: React.FC<SettingsProps> = ({ route }: SettingsProps) => {
+  const { params } = route.params;
 
-const SettingsScreen: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
@@ -19,16 +16,16 @@ const SettingsScreen: React.FC<Props> = () => {
           size="large"
           rounded
           source={{
-            uri: 'https://pbs.twimg.com/profile_images/1363228426094538754/3ncXqbh-_normal.jpg',
+            uri: params.params.user.profile_image_url,
           }}
         />
         <View style={styles.cardBody}>
           <Text style={styles.cardTitle}>
-            username: <Text style={styles.cardInnerTitle}>elonmusk</Text>
+            username: <Text style={styles.cardInnerTitle}>{params.params.user.username}</Text>
           </Text>
           <Text style={styles.cardSubtitle}>
             user id:
-            <Text style={styles.cardInnerSubtitle}> 44196397</Text>
+            <Text style={styles.cardInnerSubtitle}> {params.params.user.id}</Text>
           </Text>
         </View>
       </View>

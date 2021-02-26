@@ -13,7 +13,7 @@ Icon.loadFont();
 
 const queryClient = new QueryClient();
 
-const PERSISTENCE_KEY = 'NAVIGATION_STATE1234';
+const PERSISTENCE_KEY = 'NAVIGATION_STATE1';
 
 const App: React.FC = () => {
   const [isReady, setIsReady] = React.useState(false);

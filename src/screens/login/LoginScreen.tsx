@@ -4,7 +4,7 @@ import { SocialIcon, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
 
-import { LoginScreenRouteProp, LoginScreenNavigationProp } from '../../navigation/types';
+import { LoginProps } from '../../navigation/types';
 import { TWITTER_USERNAME_RULES_URL } from '../../services/constants';
 import { validateUsername } from '../../utils';
 import { useUserProfile } from '../../services/tweets';
@@ -12,12 +12,7 @@ import { useUserProfile } from '../../services/tweets';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
 
-type Props = {
-  route: LoginScreenRouteProp;
-  navigation: LoginScreenNavigationProp;
-};
-
-const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
+const LoginScreen: React.FC<LoginProps> = ({ navigation }: LoginProps) => {
   const [inputValue, setInputValue] = useState('');
   const [isInputValid, setIsInputValid] = useState(false);
   const [isFieldTouched, setIsFieldTouched] = useState(false);
@@ -39,7 +34,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
       screen: 'Home',
       params: {
         screen: 'Tweets',
-        params: { userId: userData.data[0].id },
+        params: { user: userData.data[0] },
       },
     });
   };

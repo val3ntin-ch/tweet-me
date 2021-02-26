@@ -4,12 +4,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import HomeTabStack from './HomeNavigation';
 import SettingsTabStack from './SettingsNavigation';
-import { BottomNavigationStackParams } from './types';
+import { BottomNavigationStackParams, MainProps } from './types';
 import colors from '../theme/colors';
 
 const BottomStack = createBottomTabNavigator<BottomNavigationStackParams>();
 
-const BottomTabNavigation: React.FC = () => {
+const BottomTabNavigation: React.FC<MainProps> = ({ route }: MainProps) => {
+  console.log('Params ', JSON.stringify(route.params, null, 4));
   return (
     <BottomStack.Navigator
       tabBarOptions={{
@@ -34,6 +35,7 @@ const BottomTabNavigation: React.FC = () => {
       <BottomStack.Screen
         name="Settings"
         component={SettingsTabStack}
+        initialParams={route.params}
         options={{
           tabBarIcon: ({ color }) => <Ionicons name="settings" size={30} color={color} />,
         }}
