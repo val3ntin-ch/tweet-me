@@ -4,7 +4,7 @@ import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
 
 import { formatDate } from '../../utils/index';
-import { TweetsScreenNavigationProp, TweetsScreenRouteProp, TweetItem, TwitterUserObj } from '../../navigation/types';
+import { TweetsScreenNavigationProp, TweetsScreenRouteProp, TweetItem, TwitterUser } from '../../navigation/types';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
 import { useUserTweetsList, useUserTweetsPaginationList } from '../../services/tweets';
@@ -14,11 +14,9 @@ type Props = {
   navigation: TweetsScreenNavigationProp;
 };
 
-const keyExtractor = (item: TweetItem) => item.id;
-
-const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, userData: TwitterUserObj) => {
+const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, userData: TwitterUser) => {
   const onNavigationHandler = (itemObj: TweetItem) => {
-    navigation.navigate('Details', { tweetObj: itemObj });
+    navigation.navigate('Details', { tweet: itemObj });
   };
 
   return (
@@ -53,10 +51,11 @@ const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, use
 
 const HomeScreen: React.FC<Props> = ({ route, navigation }: Props) => {
   const { userId } = route?.params;
-  const { data: tweetsData, isLoading } = useUserTweetsList(userId);
   const [page, setPage] = React.useState('');
   const [isEndOfList, setIsEndOfList] = React.useState(false);
   const [tweetsList, setTweetsList] = React.useState(null);
+
+  const { data: tweetsData, isLoading } = useUserTweetsList(userId);
 
   const { data: newData } = useUserTweetsPaginationList(userId, page, isEndOfList);
 
@@ -83,6 +82,7 @@ const HomeScreen: React.FC<Props> = ({ route, navigation }: Props) => {
   };
 
   const onLoadingHandler = () => <View>{isEndOfList && <ActivityIndicator size="large" color={colors.blue} />}</View>;
+  const keyExtractor = (item: TweetItem) => item.id;
 
   return (
     <View style={styles.container}>

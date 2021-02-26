@@ -11,7 +11,7 @@ export type TweetItem = {
   id: string;
 };
 
-export type TwitterUserObj = {
+export type TwitterUser = {
   username: string;
   profile_image_url: string;
   id: string;
@@ -23,13 +23,13 @@ export type ScreensParams = {
   Login: undefined;
   Main: undefined;
   Tweets: { userId: string };
-  Details: { tweetObj: TweetItem };
+  Details: { tweet: TweetItem };
   Settings: undefined;
 };
 
 export type TweetsStackParams = {
   Tweets: { userId: string };
-  Details: { tweetObj: TweetItem };
+  Details: { tweet: TweetItem };
 };
 
 export type BottomNavigationStackParams = {
