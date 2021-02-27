@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 100,
   },
+  socialButtonDisabled: {
+    color: colors.gray,
+  },
 });
 
 export default styles;

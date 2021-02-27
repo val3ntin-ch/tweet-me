@@ -11,10 +11,10 @@ import { ScreensParams } from '../types';
 import { Props as HomeScreenParams } from '../navigation/HomeNavigation';
 import colors from '../theme/colors';
 
-type MainRouteProp = RouteProp<ScreensParams, 'Main'>;
-type MainNavigationProp = StackNavigationProp<ScreensParams, 'Main'>;
+export type MainRouteProp = RouteProp<ScreensParams, 'Main'>;
+export type MainNavigationProp = StackNavigationProp<ScreensParams, 'Main'>;
 
-type Props = {
+export type Props = {
   route: MainRouteProp;
   navigation: MainNavigationProp;
 };

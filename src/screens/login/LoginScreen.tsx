@@ -7,14 +7,11 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { CompositeNavigationProp } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-
 import { ScreensParams } from '../../types';
 import { Props as AppStackParams } from '../../navigation';
-
 import { TWITTER_USERNAME_RULES_URL } from '../../services/constants';
 import { validateUsername } from '../../utils';
 import { useUserProfile } from '../../services/tweets';
-
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
 
@@ -34,27 +31,33 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
   const [isInputValid, setIsInputValid] = React.useState(false);
   const [isFieldTouched, setIsFieldTouched] = React.useState(false);
 
-  const { data: userData, isLoading, isError } = useUserProfile(inputValue, isInputValid);
+  const { data: userData, isLoading, isError, isFetching } = useUserProfile(inputValue, isInputValid);
 
+  console.log('isLoading ', isLoading, isFetching);
+  console.log('data ', userData);
   React.useEffect(() => {
+    console.log('data');
     if (inputValue !== 'Twitter' && inputValue !== 'Admin') {
       setIsInputValid(validateUsername(inputValue));
     }
   }, [inputValue]);
 
   const onChangeHandler = (value: string) => {
+    console.log('data value ', value);
     setInputValue(value);
     setIsFieldTouched(true);
   };
 
   const navigationHandler = () => {
-    navigation.navigate('Main', {
-      screen: 'Home',
-      params: {
-        screen: 'Tweets',
-        params: { userId: userData?.data[0].id, userName: userData?.data[0].username },
-      },
-    });
+    if (!isLoading) {
+      navigation.navigate('Main', {
+        screen: 'Home',
+        params: {
+          screen: 'Tweets',
+          params: { userId: userData?.data[0].id, userName: userData?.data[0].username },
+        },
+      });
+    }
   };
 
   const openRefInBrowserHandler = () => {
@@ -99,10 +102,12 @@ const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
         <SocialIcon
           title="Get tweets"
           button
+          loading={isFetching && isLoading && isInputValid}
           type="twitter"
           onPress={navigationHandler}
           style={styles.socialButton}
           disabled={isLoading || isError || !isInputValid}
+          underlayColor="gray"
         />
       </View>
     </View>
