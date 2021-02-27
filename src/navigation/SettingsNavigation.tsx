@@ -4,14 +4,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../screens/settings/SettingsScreen';
 import LogoTitle from '../components/Logo/Logo';
 
-import { ScreensParams, SettingsProps } from './types';
+import { ScreensParams } from '../types';
+import { Props } from '../screens/settings';
 import colors from '../theme/colors';
 
 const SettingsStack = createStackNavigator<ScreensParams>();
 
-const SettingsNavigation: React.FC<SettingsProps> = ({ route }: SettingsProps) => {
-  // console.log('route stack ', route.params);
-
+const SettingsNavigation: React.FC<Props> = ({ route }: Props) => {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen

@@ -1,8 +1,13 @@
 import axiosInstance from './axios';
 import { useQuery, useInfiniteQuery } from 'react-query';
+import { TwitterUser } from '../types';
+
+type UserProfileResult = {
+  data: TwitterUser[];
+};
 
 export const useUserProfile = (username: string, isValid: boolean) =>
-  useQuery(
+  useQuery<UserProfileResult>(
     `user-data-${username}`,
     () =>
       axiosInstance
@@ -11,7 +16,7 @@ export const useUserProfile = (username: string, isValid: boolean) =>
     { enabled: isValid },
   );
 
-export const useUserTweetsList = (userId: string) =>
+export const useUserTweetsList = (userId?: string) =>
   useInfiniteQuery(
     `user-tweets-list-${userId}`,
     ({ pageParam }) => {

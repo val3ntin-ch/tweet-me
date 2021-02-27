@@ -3,13 +3,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import DetailsScreen from '../screens/details/DetailsScreen';
-import { TweetsStackParams } from './types';
+import { TweetItem } from '../types';
 
 import colors from '../theme/colors';
 import DetailsTitle from '../components/DetailsIcon/DetailsIcon';
 import LogoTitle from '../components/Logo/Logo';
 
-const HomeStack = createStackNavigator<TweetsStackParams>();
+export type Props = {
+  Tweets: { userId?: string; userName?: string };
+  Details: { tweet: TweetItem };
+};
+
+const HomeStack = createStackNavigator<Props>();
 
 const HomeNavigation: React.FC = () => {
   return (

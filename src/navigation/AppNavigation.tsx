@@ -1,10 +1,16 @@
 import React from 'react';
 import { createNativeStackNavigator } from 'react-native-screens/native-stack';
-import { AppStackParams } from './types';
-import LoginScreen from '../screens/login/LoginScreen';
-import BottomTabStack from './BottomTabNavigation';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
-const AppStack = createNativeStackNavigator<AppStackParams>();
+import LoginScreen from '../screens/login/LoginScreen';
+import BottomTabStack, { NavigationStackParams } from './BottomTabNavigation';
+
+export type Props = {
+  Login: undefined;
+  Main: NavigatorScreenParams<NavigationStackParams>;
+};
+
+const AppStack = createNativeStackNavigator<Props>();
 
 const AppNavigation: React.FC = () => (
   <AppStack.Navigator

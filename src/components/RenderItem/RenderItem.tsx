@@ -4,16 +4,16 @@ import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
 
 import { formatDate } from '../../utils/index';
-import { TweetItem, TwitterUser, TweetsScreenNavigationProp } from '../../navigation/types';
+import { TweetItem, TwitterUser, TweetsScreenNavigationProp } from '../../types';
 import styles from './RenderItem.styles';
 import colors from '../../theme/colors';
 
 type Item = {
-  children?: React.ReactNode;
   item: TweetItem;
   navigation: TweetsScreenNavigationProp;
   userData: TwitterUser;
 };
+
 const RenderItem: React.FC<Item> = ({ item, navigation, userData }: Item) => {
   const onNavigationHandler = (itemObj: TweetItem) => {
     navigation.navigate('Details', { tweet: itemObj });

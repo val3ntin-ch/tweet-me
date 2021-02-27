@@ -2,12 +2,22 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import Hyperlink from 'react-native-hyperlink';
 import { Card } from 'react-native-elements';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-import { DetailsProps } from '../../navigation/types';
+import { ScreensParams } from '../../types';
 import { formatDate } from '../../utils/index';
 import styles from './DetailsScreen.styles';
 
-const DetailsScreen: React.FC<DetailsProps> = ({ route }: DetailsProps) => {
+export type DetailsScreenRouteProp = RouteProp<ScreensParams, 'Details'>;
+export type DetailsScreenNavigationProp = StackNavigationProp<ScreensParams, 'Details'>;
+
+export type Props = {
+  route: DetailsScreenRouteProp;
+  navigation: DetailsScreenNavigationProp;
+};
+
+const DetailsScreen: React.FC<Props> = ({ route }: Props) => {
   const { tweet } = route.params;
   const { text: message, created_at: date } = tweet;
 

@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Linking, Text } from 'react-native';
 import { SocialIcon, Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconLogo from 'react-native-vector-icons/Feather';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { CompositeNavigationProp } from '@react-navigation/native';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-import { LoginProps } from '../../navigation/types';
+import { ScreensParams } from '../../types';
+import { Props as AppStackParams } from '../../navigation';
+
 import { TWITTER_USERNAME_RULES_URL } from '../../services/constants';
 import { validateUsername } from '../../utils';
 import { useUserProfile } from '../../services/tweets';
@@ -12,13 +18,25 @@ import { useUserProfile } from '../../services/tweets';
 import colors from '../../theme/colors';
 import styles from './LoginScreen.styles';
 
-const LoginScreen: React.FC<LoginProps> = ({ navigation }: LoginProps) => {
-  const [inputValue, setInputValue] = useState('');
-  const [isInputValid, setIsInputValid] = useState(false);
-  const [isFieldTouched, setIsFieldTouched] = useState(false);
+export type LoginScreenRouteProp = RouteProp<ScreensParams, 'Login'>;
+export type LoginScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<AppStackParams, 'Login'>,
+  BottomTabNavigationProp<AppStackParams>
+>;
+
+export type Props = {
+  route: LoginScreenRouteProp;
+  navigation: LoginScreenNavigationProp;
+};
+
+const LoginScreen: React.FC<Props> = ({ navigation }: Props) => {
+  const [inputValue, setInputValue] = React.useState('');
+  const [isInputValid, setIsInputValid] = React.useState(false);
+  const [isFieldTouched, setIsFieldTouched] = React.useState(false);
+
   const { data: userData, isLoading, isError } = useUserProfile(inputValue, isInputValid);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (inputValue !== 'Twitter' && inputValue !== 'Admin') {
       setIsInputValid(validateUsername(inputValue));
     }
@@ -34,7 +52,7 @@ const LoginScreen: React.FC<LoginProps> = ({ navigation }: LoginProps) => {
       screen: 'Home',
       params: {
         screen: 'Tweets',
-        params: { user: userData.data[0] },
+        params: { userId: userData?.data[0].id, userName: userData?.data[0].username },
       },
     });
   };

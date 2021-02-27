@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
+import { useQueryClient } from 'react-query';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-import { TweetItem, TweetsProps } from '../../navigation/types';
+import { ScreensParams, TwitterUser, TweetItem } from '../../types';
+
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
 import { useUserTweetsList } from '../../services/tweets';
@@ -9,14 +13,26 @@ import { useUserTweetsList } from '../../services/tweets';
 import RenderItem from '../../components/RenderItem';
 import EmptyListView from '../../components/EmptyListView';
 
+export type TweetsScreenRouteProp = RouteProp<ScreensParams, 'Tweets'>;
+export type TweetsScreenNavigationProp = StackNavigationProp<ScreensParams, 'Tweets'>;
+
+export type Props = {
+  route: TweetsScreenRouteProp;
+  navigation: TweetsScreenNavigationProp;
+};
+
+export type UserCache = {
+  data: TwitterUser[];
+};
+
 const keyExtractor = (item: TweetItem) => item.id;
 
-const HomeScreen: React.FC<TweetsProps> = ({ route, navigation }: TweetsProps) => {
-  const { user } = route?.params;
+const HomeScreen: React.FC<Props> = ({ route, navigation }: Props) => {
+  const { userId, userName } = route?.params;
+  const client = useQueryClient();
 
-  console.log('user data ', route?.params);
-
-  const { data: tweetsData, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } = useUserTweetsList(user?.id);
+  const { data: userData } = client.getQueryData(`user-data-${userName}`) as UserCache;
+  const { data: tweetsData, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } = useUserTweetsList(userId);
 
   const listData = tweetsData?.pages.reduce((acc, curr) => acc.concat([...(curr.data || [])]), []);
 
@@ -41,7 +57,7 @@ const HomeScreen: React.FC<TweetsProps> = ({ route, navigation }: TweetsProps) =
         <FlatList
           data={listData}
           initialNumToRender={10}
-          renderItem={({ item }) => <RenderItem item={item} navigation={navigation} userData={user} />}
+          renderItem={({ item }) => <RenderItem item={item} navigation={navigation} userData={userData[0]} />}
           keyExtractor={keyExtractor}
           contentContainerStyle={styles.listContainer}
           onEndReached={onListEndReachedHandler}

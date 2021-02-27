@@ -1,18 +1,31 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { NavigatorScreenParams } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { RouteProp } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import HomeTabStack from './HomeNavigation';
 import SettingsTabStack from './SettingsNavigation';
-import { BottomNavigationStackParams, MainProps } from './types';
+import { ScreensParams } from '../types';
+import { Props as HomeScreenParams } from '../navigation/HomeNavigation';
 import colors from '../theme/colors';
 
-const BottomStack = createBottomTabNavigator<BottomNavigationStackParams>();
+type MainRouteProp = RouteProp<ScreensParams, 'Main'>;
+type MainNavigationProp = StackNavigationProp<ScreensParams, 'Main'>;
 
-const BottomTabNavigation: React.FC<MainProps> = ({ route }: MainProps) => {
-  const { user } = route.params;
-  console.log('Params xx', JSON.stringify(user, null, 4));
+type Props = {
+  route: MainRouteProp;
+  navigation: MainNavigationProp;
+};
 
+export type NavigationStackParams = {
+  Home: NavigatorScreenParams<HomeScreenParams>;
+  Settings: { userId?: string };
+};
+const BottomStack = createBottomTabNavigator<NavigationStackParams>();
+
+const BottomTabNavigation: React.FC<Props> = ({ route }: Props) => {
   return (
     <BottomStack.Navigator
       tabBarOptions={{
