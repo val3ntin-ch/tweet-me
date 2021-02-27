@@ -6,8 +6,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { SettingsProps } from '../../navigation/types';
 import styles from './SettingsScreen.styles';
 
-const SettingsScreen: React.FC<SettingsProps> = ({ route }: SettingsProps) => {
+const SettingsScreen: React.FC<SettingsProps> = ({ route, navigation }: SettingsProps) => {
   const { params } = route.params;
+
+  const onNavigationHandler = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Login' }],
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -36,6 +43,7 @@ const SettingsScreen: React.FC<SettingsProps> = ({ route }: SettingsProps) => {
         title="Logout"
         titleStyle={styles.buttonStyle}
         containerStyle={styles.buttonContainer}
+        onPress={onNavigationHandler}
       />
     </View>
   );

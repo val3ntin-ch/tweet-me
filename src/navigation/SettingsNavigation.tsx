@@ -11,6 +11,7 @@ const SettingsStack = createStackNavigator<ScreensParams>();
 
 const SettingsNavigation: React.FC<SettingsProps> = ({ route }: SettingsProps) => {
   // console.log('route stack ', route.params);
+
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen

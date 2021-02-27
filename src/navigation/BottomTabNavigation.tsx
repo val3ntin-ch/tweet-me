@@ -10,7 +10,9 @@ import colors from '../theme/colors';
 const BottomStack = createBottomTabNavigator<BottomNavigationStackParams>();
 
 const BottomTabNavigation: React.FC<MainProps> = ({ route }: MainProps) => {
-  console.log('Params ', JSON.stringify(route.params, null, 4));
+  const { user } = route.params;
+  console.log('Params xx', JSON.stringify(user, null, 4));
+
   return (
     <BottomStack.Navigator
       tabBarOptions={{

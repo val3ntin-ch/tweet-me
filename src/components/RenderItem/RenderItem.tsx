@@ -5,15 +5,16 @@ import Hyperlink from 'react-native-hyperlink';
 
 import { formatDate } from '../../utils/index';
 import { TweetItem, TwitterUser, TweetsScreenNavigationProp } from '../../navigation/types';
-import styles from './HomeScreen.styles';
+import styles from './RenderItem.styles';
 import colors from '../../theme/colors';
 
 type Item = {
+  children?: React.ReactNode;
   item: TweetItem;
   navigation: TweetsScreenNavigationProp;
   userData: TwitterUser;
 };
-const RenderItem: React.FC<Item> = ({ item, navigation, userData }) => {
+const RenderItem: React.FC<Item> = ({ item, navigation, userData }: Item) => {
   const onNavigationHandler = (itemObj: TweetItem) => {
     navigation.navigate('Details', { tweet: itemObj });
   };
@@ -47,8 +48,6 @@ const RenderItem: React.FC<Item> = ({ item, navigation, userData }) => {
   );
 };
 
-export default React.memo<Item>(RenderItem, propsAreEquals);
+const propsAreEquals = (prevProps: Item, nextProps: Item): boolean => prevProps.item.id === nextProps.item.id;
 
-function propsAreEquals(prevProps: TweetItem, nextProps: TweetItem) {
-  return prevProps.id === nextProps.id;
-}
+export default React.memo<Item>(RenderItem, propsAreEquals);

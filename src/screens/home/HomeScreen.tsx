@@ -1,51 +1,15 @@
 import React from 'react';
-import { View, FlatList, Text, ActivityIndicator } from 'react-native';
-import { ListItem, Avatar } from 'react-native-elements';
-import Hyperlink from 'react-native-hyperlink';
+import { View, FlatList, ActivityIndicator } from 'react-native';
 
-import { formatDate } from '../../utils/index';
-import { TweetItem, TwitterUser, TweetsProps, TweetsScreenNavigationProp } from '../../navigation/types';
+import { TweetItem, TweetsProps } from '../../navigation/types';
 import styles from './HomeScreen.styles';
 import colors from '../../theme/colors';
 import { useUserTweetsList } from '../../services/tweets';
 
-import RenderItem from './RenderItem';
+import RenderItem from '../../components/RenderItem';
+import EmptyListView from '../../components/EmptyListView';
 
 const keyExtractor = (item: TweetItem) => item.id;
-
-// const renderItem = (item: TweetItem, navigation: TweetsScreenNavigationProp, userData: TwitterUser) => {
-//   const onNavigationHandler = (itemObj: TweetItem) => {
-//     navigation.navigate('Details', { tweet: itemObj });
-//   };
-//   return (
-//     <ListItem
-//       onPress={() => onNavigationHandler(item)}
-//       bottomDivider
-//       topDivider
-//       pad={20}
-//       containerStyle={styles.listItemContainer}
-//     >
-//       <Avatar
-//         containerStyle={styles.avatarContainer}
-//         rounded
-//         source={{ uri: userData?.profile_image_url }}
-//         size="medium"
-//       />
-//       <ListItem.Content>
-//         <ListItem.Title style={styles.usernameContainer}>
-//           <Text style={styles.usernameStyle}>{userData?.name}</Text>
-//         </ListItem.Title>
-//         <Hyperlink linkDefault={true} linkStyle={styles.linkStyle}>
-//           <Text style={styles.listItemTitle} numberOfLines={1}>
-//             {item.text}
-//           </Text>
-//         </Hyperlink>
-//         <ListItem.Subtitle style={styles.listItemSubtitle}>{formatDate(item.created_at)}</ListItem.Subtitle>
-//       </ListItem.Content>
-//       <ListItem.Chevron color={colors.gray} size={26} />
-//     </ListItem>
-//   );
-// };
 
 const HomeScreen: React.FC<TweetsProps> = ({ route, navigation }: TweetsProps) => {
   const { user } = route?.params;
@@ -83,6 +47,7 @@ const HomeScreen: React.FC<TweetsProps> = ({ route, navigation }: TweetsProps) =
           onEndReached={onListEndReachedHandler}
           onEndReachedThreshold={0.4}
           ListFooterComponent={onLoadingHandler}
+          ListEmptyComponent={<EmptyListView />}
         />
       )}
     </View>
