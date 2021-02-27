@@ -4,7 +4,9 @@ import { ListItem, Avatar } from 'react-native-elements';
 import Hyperlink from 'react-native-hyperlink';
 
 import { formatDate } from '../../utils/index';
-import { TweetItem, TwitterUser, TweetsScreenNavigationProp } from '../../types';
+import { TweetItem, TwitterUser } from '../../types';
+import { TweetsScreenNavigationProp } from '../../screens/home/HomeScreen';
+
 import styles from './RenderItem.styles';
 import colors from '../../theme/colors';
 
